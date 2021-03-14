@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:51:27 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/14 17:53:35 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/14 19:06:54 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ void	ft_error(void)
 {
 	write(2, "Error\n", ft_strlen("Error\n"));
 	exit(1);
+}
+
+void ft_free(t_stacks *st, char *in)
+{
+	if (st->a != NULL)
+		free(st->a);
+	if (st->b != NULL)
+		free(st->b);
+	if (in != NULL)
+		free(in);
+	ft_error();
 }
 
 int		check_num(char *str)
