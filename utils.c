@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:51:27 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/14 19:06:54 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 18:42:42 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@ void	ft_error(void)
 	exit(1);
 }
 
-void ft_free(t_stacks *st, char *in)
+void ft_free(t_stacks *st)
 {
-	if (st->a != NULL)
-		free(st->a);
-	if (st->b != NULL)
-		free(st->b);
-	if (in != NULL)
-		free(in);
+	free(st->a);
+	free(st->b);
 	ft_error();
+}
+
+int ft_strcomp(const char *s1, const char *s2)
+{
+	int i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	if (!s1[i] && !s2[i])
+		return (1);
+	return (0);
 }
 
 int		check_num(char *str)

@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/14 19:07:21 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 18:45:54 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,30 @@ void	exec(char *in, t_stacks *st)
 	else if (ft_strcomp(in, "rrr"))
 		rrr(st);
 	else
-		ft_free(st, in);
+		ft_free(st);
 }
 
 void	checker(t_stacks *st)
 {
-	char *in;
+	char in[2];
+	char str[256];
+	int i;
 
-	in = malloc(4);
-	while (in[0] != '\0')
+	i = 0;
+	while (i < 256)
+		str[i++] = 0;
+	i = 0;
+	while (read(0, in, 1) > 0)
 	{
-		read(0, in, 4);
-		exec(in, st);
+		str[i] = in[0];
+		if (str[i] == '\n')
+		{
+			str[i] = 0;
+			exec(str, st);
+			while(i >= 0)
+				str[i--] = 0;
+		}
+		i++;
 	}
 }
 
@@ -75,7 +87,7 @@ int	main(int ac, char **av)
 	st.size_b = 0;
 	while (av[i])
 	{
-		st.a[i] = ft_atoi(av[i]);
+		st.a[i - 1] = ft_atoi(av[i]);
 		i++;
 	}
 	checker(&st);
