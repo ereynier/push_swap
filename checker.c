@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/16 18:45:54 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 19:24:42 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ int	main(int ac, char **av)
 	while (av[i])
 		if (check_num(av[i++]))
 			ft_error();
-	i = 1;
 	st.a = malloc(ac - 1);
 	st.b = malloc(ac - 1);
 	if (st.a == NULL || st.b == NULL)
 		ft_error();
+	i = ac - 1;
 	st.size = ac - 1;
 	st.size_a = st.size;
 	st.size_b = 0;
-	while (av[i])
+	while (i > 0)
 	{
-		st.a[i - 1] = ft_atoi(av[i]);
-		i++;
+		st.a[ac - 1 - i] = ft_atoi(av[i]);
+		i--;
 	}
 	checker(&st);
 	return (0);
