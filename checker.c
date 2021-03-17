@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/16 19:24:42 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 18:25:37 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,41 @@ void	exec(char *in, t_stacks *st)
 		ft_free(st);
 }
 
+void check_dup(t_stacks *st)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < st->size_a)
+	{
+		j = i + 1;
+		while (j < st->size_a)
+			if (st->a[i] == st->a[j++])
+				ft_free(st);
+		i++;
+	}
+}
+
+void	check_sort(t_stacks *st)
+{
+	int i;
+
+	i = 0;
+	if (st->size_a == st->size && st->size_b == 0)
+	{
+		while (i < st->size_a - 1)
+		{
+			if (st->a[i] < st->a[i + 1])
+				ko_ok(st, "KO\n");
+			i++;
+		}
+		ko_ok(st, "OK\n");
+		return ;
+	}
+	ko_ok(st, "KO\n");
+}
+
 void	checker(t_stacks *st)
 {
 	char in[2];
@@ -64,6 +99,7 @@ void	checker(t_stacks *st)
 		}
 		i++;
 	}
+	check_sort(st);
 }
 
 int	main(int ac, char **av)
@@ -90,6 +126,7 @@ int	main(int ac, char **av)
 		st.a[ac - 1 - i] = ft_atoi(av[i]);
 		i--;
 	}
+	check_dup(&st);
 	checker(&st);
 	return (0);
 }

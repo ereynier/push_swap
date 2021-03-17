@@ -66,3 +66,11 @@ void rr(t_stacks *st)
 	rra(st);
 	rrb(st);
 }
+
+void ko_ok(t_stacks *st, char *s)
+{
+	write(2, s, ft_strlen(s));
+	free(st->a);
+	free(st->b);
+	exit(1);
+}
