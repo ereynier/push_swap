@@ -6,13 +6,13 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:35:57 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/16 18:53:06 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 12:30:04 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void rra(t_stacks *st)
+void ra(t_stacks *st)
 {
     int i;
     int tmp;
@@ -36,7 +36,7 @@ void rra(t_stacks *st)
     }
 }
 
-void rrb(t_stacks *st)
+void rb(t_stacks *st)
 {
     int i;
     int tmp;
@@ -60,7 +60,7 @@ void rrb(t_stacks *st)
     }
 }
 
-void rrr(t_stacks *st)
+void rr(t_stacks *st)
 {
     ra(st);
     rb(st);

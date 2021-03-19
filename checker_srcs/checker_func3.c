@@ -12,7 +12,7 @@
 
 #include "checker.h"
 
-void ra(t_stacks *st)
+void rra(t_stacks *st)
 {
 	int i;
 	int tmp;
@@ -36,7 +36,7 @@ void ra(t_stacks *st)
 	}
 }
 
-void rb(t_stacks *st)
+void rrb(t_stacks *st)
 {
 	int i;
 	int tmp;
@@ -61,7 +61,7 @@ void rb(t_stacks *st)
 }
 
 
-void rr(t_stacks *st)
+void rrr(t_stacks *st)
 {
 	rra(st);
 	rrb(st);
