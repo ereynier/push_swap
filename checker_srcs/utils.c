@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:51:27 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/16 18:42:42 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 15:06:08 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		check_num(char *str)
 	return (0);
 }
 
-int		ft_atoi(char *str)
+int		ft_atoi(char *str, t_stacks *st)
 {
 	long int	n;
 	int			neg;
@@ -82,5 +82,7 @@ int		ft_atoi(char *str)
 		n = n * 10 + str[i] - '0';
 		i++;
 	}
+	if (n * neg > 2147483647 || n * neg < -2147483648)
+		ft_free(st);
 	return ((int)(n * neg));
 }

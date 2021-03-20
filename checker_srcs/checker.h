@@ -29,7 +29,7 @@ typedef struct s_stacks
 int		ft_strlen(char *str);
 void	ft_error(void);
 int		check_num(char *str);
-int		ft_atoi(char* str);
+int		ft_atoi(char *str, t_stacks *st);
 void	checker(t_stacks *st);
 void	ft_free(t_stacks *st);
 void	exec(char *in, t_stacks *st);

@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/19 12:25:46 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 15:04:27 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void check_dup(t_stacks *st)
 void sort(t_stacks *st)
 {
 	int i = 0;
-    while (i++ < 5)
+    while (i++ < 1)
 	{
 		if (check_a(st))
 			break;
 		if (st->size_a <= 3)
 			sort_3(st);
+		if (st->size < 100 && st->size_a > 3)
+			sort_5(st);
 	}
 }
 
@@ -61,7 +63,7 @@ int main(int ac, char **av)
 	st.size_b = 0;
 	while (i > 0)
 	{
-		st.a[ac - 1 - i] = ft_atoi(av[i]);
+		st.a[ac - 1 - i] = ft_atoi(av[i], &st);
 		i--;
 	}
 	check_dup(&st);
