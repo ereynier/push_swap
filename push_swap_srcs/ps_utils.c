@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:30:36 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 15:01:18 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 18:55:26 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void get_pos(t_stacks *st, int i)
 
 void sort_3(t_stacks *st)
 {
-    if (st->size_a == 2 && st->a[0] < st->b[1])
+    if (st->size_a == 2 && st->a[0] < st->a[1])
         action(st, "sa");
     if (st->size_a == 3)
     {
@@ -92,34 +92,7 @@ void sort_5(t_stacks *st)
     sort_3(st);
     while (st->size_b > 0)
     {
-        i = 0;
-        if (st->a[0] > st->a[st->size_a - 1])
-        {
-            while (i < st->size_a)
-            {
-                 if (st->b[st->size_b - 1] > st->a[i])
-                    break;
-                i++;
-            }
-            get_pos(st, i);
-            action(st, "pa");
-        }
-        else
-        {
-            while(i < st->size_a)
-            {
-                if (i < st->size_a - 1 && st->b[st->size_b] > st->a[i] && st->a[i] > st->a[i + 1])
-                    while (i < st->size_a - 1 && st->a[i] > st->a[i + 1])
-                        i++;
-                else if (i > 0 && st->b[st->size_b - 1] < st->a[i] && st->a[i] > st->a[i - 1])
-                    break ;
-                else if (st->b[st->size_b - 1] > st->a[i])
-                    break ;
-                i++;
-            }
-            get_pos(st, i);
-            action(st, "pa");
-        }
+        
     }
     rotate(st);
 }

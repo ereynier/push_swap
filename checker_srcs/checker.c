@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 15:08:29 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 17:19:47 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	checker(t_stacks *st)
 	while (read(0, in, 1) > 0)
 	{
 		str[i] = in[0];
-		if (str[i] == '\n')
+		if (str[i] == '\n' || i > 250)
 		{
 			str[i] = 0;
 			exec(str, st);
@@ -105,27 +105,15 @@ void	checker(t_stacks *st)
 int	main(int ac, char **av)
 {
 	t_stacks st;
-	int	i;
+	char **lst;
 
-	i = 1;
 	if (ac < 2)
 		ft_error();
-	while (av[i])
-		if (check_num(av[i++]))
-			ft_error();
-	st.a = malloc(ac - 1);
-	st.b = malloc(ac - 1);
-	if (st.a == NULL || st.b == NULL)
-		ft_error();
-	i = ac - 1;
-	st.size = ac - 1;
-	st.size_a = st.size;
-	st.size_b = 0;
-	while (i > 0)
-	{
-		st.a[ac - 1 - i] = ft_atoi(av[i], &st);
-		i--;
-	}
+	lst = ft_split(av[1], ' ');
+	if (lst[1])
+		use_lst(lst, &st, 0);
+	else
+		use_lst(av, &st, 1);
 	check_dup(&st);
 	checker(&st);
 	return (0);

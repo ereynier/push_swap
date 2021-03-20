@@ -36,6 +36,8 @@ void	exec(char *in, t_stacks *st);
 int		ft_strcomp(const char *s1, const char *s2);
 void	ko_ok(t_stacks *st, char *s);
 void	check_sort(t_stacks *st);
+char    **ft_split(char const *s, char c);
+void    use_lst(char **av, t_stacks *st, int d);
 void	pb(t_stacks *st);
 void	pa(t_stacks *st);
 void	sa(t_stacks *st);
