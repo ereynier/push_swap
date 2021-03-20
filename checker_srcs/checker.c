@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/17 18:25:37 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 15:08:29 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	main(int ac, char **av)
 	st.size_b = 0;
 	while (i > 0)
 	{
-		st.a[ac - 1 - i] = ft_atoi(av[i]);
+		st.a[ac - 1 - i] = ft_atoi(av[i], &st);
 		i--;
 	}
 	check_dup(&st);

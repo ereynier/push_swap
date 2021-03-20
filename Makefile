@@ -25,9 +25,11 @@ all:		${NAME}
 
 clean:		
 			rm -f ${OBJS1}
+			rm -f ${OBJS}
 
 fclean:		clean
 			rm -f ${NAME}
+			rm -f ${NAME1}
 
 re:			fclean all
 
