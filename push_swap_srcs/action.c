@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:54:46 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 18:06:43 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 20:17:15 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void action(t_stacks *st, char *s)
 {
-    int i = st->size_a - 1;
-    while (i >= 0)
-        dprintf(2,"%d\n", st->a[i--]);
-    dprintf(2,"\n");
     if (ft_strcomp(s, "sa"))
         sa(st);
     else if (ft_strcomp(s, "sb"))

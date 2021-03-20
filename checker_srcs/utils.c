@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:51:27 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 17:23:25 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 19:39:27 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,11 @@ void use_lst(char **av, t_stacks *st, int d)
 		st->a[ac - d - i] = ft_atoi(av[i - (z_to_o(d))], st);
 		i--;
 	}
+}
+
+int ft_abs(int i)
+{
+	if (i < 0)
+		i = -i;
+	return (i);
 }

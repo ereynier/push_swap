@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:30:36 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 18:55:26 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 20:15:41 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,26 @@ void sort_3(t_stacks *st)
 void sort_5(t_stacks *st)
 {
     int i;
+    int min;
+	int j;
 
     while(st->size_a > 3)
         action(st, "pb");
     sort_3(st);
+	min = st->size_a - 1;
     while (st->size_b > 0)
     {
-        
+		j = 0;
+		i = (min + 1) % st->size_a;
+        while (st->a[i] > st->b[st->size_b - 1] && j++ < st->size_a)
+			i = (i + 1) % st->size_a;
+		get_pos(st, i);
+		action(st, "pa");
+		min = ((min - i) % st->size_a);
+        if (min < 0)
+            min = st->size_a + min - 1;
+		if (st->a[min] > st->a[(min + 1) % st->size_a])
+			min = (min + 1) % st->size_a;
     }
     rotate(st);
 }
