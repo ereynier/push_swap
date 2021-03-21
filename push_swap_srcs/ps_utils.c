@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:30:36 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 20:15:41 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 13:55:56 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void get_pos(t_stacks *st, int i)
 
 void sort_3(t_stacks *st)
 {
+    if (check_a(st))
+        return ;
     if (st->size_a == 2 && st->a[0] < st->a[1])
         action(st, "sa");
     if (st->size_a == 3)
@@ -89,6 +91,8 @@ void sort_5(t_stacks *st)
     int min;
 	int j;
 
+    if (check_a(st))
+        return ;
     while(st->size_a > 3)
         action(st, "pb");
     sort_3(st);

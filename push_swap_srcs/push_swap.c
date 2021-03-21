@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 20:23:54 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 13:53:42 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,30 @@ void check_dup(t_stacks *st)
 	}
 }
 
+void check_just_swap(t_stacks *st)
+{
+	if (st->size_a >= 2)
+	{
+		if (st->a[st->size_a - 1] > st->a[st->size_a - 2])
+			action(st, "sa");
+		if (st->a[0] < st->a[1])
+		{
+			action(st, "rra");
+			action(st, "rra");
+			action(st, "sa");
+			action(st, "ra");
+			action(st, "ra");
+		}
+	}
+}
+
 void sort(t_stacks *st)
 {
-	int i = 0;
-    while (i++ < 1)
+    while (1)
 	{
 		if (check_a(st))
 			break;
+		check_just_swap(st);
 		if (st->size_a <= 3)
 			sort_3(st);
 		if (st->size != 100 && st->size_a > 3)
