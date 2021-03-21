@@ -2,7 +2,7 @@ SRCS1	= checker_srcs/checker.c checker_srcs/utils.c checker_srcs/checker_func.c 
 
 OBJS1	= ${SRCS1:.c=.o}
 
-SRCS = push_swap_srcs/push_swap.c push_swap_srcs/ps_utils.c push_swap_srcs/action.c checker_srcs/utils.c checker_srcs/checker_func.c checker_srcs/checker_func2.c checker_srcs/checker_func3.c checker_srcs/ft_split.c
+SRCS = push_swap_srcs/push_swap.c push_swap_srcs/ps_utils.c push_swap_srcs/action.c checker_srcs/utils.c checker_srcs/checker_func.c checker_srcs/checker_func2.c checker_srcs/checker_func3.c checker_srcs/ft_split.c push_swap_srcs/ps_utils2.c
 
 OBJS	= ${SRCS:.c=.o}
 

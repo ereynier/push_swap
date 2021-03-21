@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 13:53:42 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 19:42:05 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ void sort(t_stacks *st)
 		check_just_swap(st);
 		if (st->size_a <= 3)
 			sort_3(st);
-		if (st->size != 100 && st->size_a > 3)
+		if (st->size <= 100 && st->size_a > 3)
 			sort_5(st);
+		if (st->size > 100 && st->size_a > 3)
+			sort_100(st);
 	}
 }
 

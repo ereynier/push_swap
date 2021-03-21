@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:32:14 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 19:39:41 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 17:53:55 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	get_pos(t_stacks *st, int i);
 char	**ft_split(char const *s, char c);
 void	use_lst(char **av, t_stacks *st, int d);
 int     ft_abs(int i);
+void    sort_100(t_stacks *st);
+void    rotate(t_stacks *st);
+void    get_num(t_stacks *st, int i);
 void	sort(t_stacks *st);
 void	pb(t_stacks *st);
 void	pa(t_stacks *st);

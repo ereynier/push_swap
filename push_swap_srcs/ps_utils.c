@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:30:36 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 13:55:56 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 19:35:57 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ void rotate(t_stacks *st)
     while (i < st->size_a && st->a[i] > st->a[i + 1])
         i++;
     get_pos(st, i + 1);
+}
+
+void get_num(t_stacks *st, int i)
+{
+    if (i > st->size_a / 2)
+    {
+        i = st->size_a - i;
+        while (i-- > 0)
+            action(st, "ra");
+    }
+    else
+    {
+        while (i-- >= 0)
+            action(st, "rra");
+    }
 }
 
 void get_pos(t_stacks *st, int i)
