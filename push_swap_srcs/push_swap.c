@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 23:20:12 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 23:22:32 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void check_just_swap(t_stacks *st)
 		}
 		if (st->a[0] < st->a[1])
 		{
-			i = 1;
+			i = 0;
 			j = 0;
 			while (++i < st->size_a)
 				if (st->a[i] < st->a[i + 1])

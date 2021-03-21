@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:36:01 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 19:49:33 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 00:17:07 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ void pb_100_bis(t_stacks *st, int chunk, int min)
 				i++;
 		}
 		n++;
-		if (n > 11)
-			n = 11;
+		if (n > 13)
+			n = 13;
 	}
 }
 
@@ -118,7 +118,7 @@ void pb_100(t_stacks *st)
 			min = st->a[i];
 		i++;
 	}
-	chunk = (max - min) / 11;
+	chunk = (max - min) / 13;
 	pb_100_bis(st, chunk, min);
 }
 
