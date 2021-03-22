@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:32:14 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/22 14:54:46 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 18:03:31 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	rotate(t_stacks *st);
 void	pb_100(t_stacks *st);
 void	get_num(t_stacks *st, int i);
 void	sort(t_stacks *st);
+void	pb_100_bis2(t_stacks *st, int *i, int *m, int use_i);
+int		pb_100_insert_b(t_stacks *st, int min);
 void	pb(t_stacks *st);
 void	pa(t_stacks *st);
 void	sa(t_stacks *st);
