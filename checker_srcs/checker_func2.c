@@ -6,62 +6,62 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:35:57 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 23:08:12 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 12:21:56 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void ra(t_stacks *st)
+void	ra(t_stacks *st)
 {
-    int i;
-    int tmp;
-    int tmp2;
+	int	i;
+	int	tmp;
+	int	tmp2;
 
-    i = 0;
-    while (i < st->size_a && st->size_a >= 2)
-    {
-        if (i == 0)
-        {
-            tmp2 = st->a[i];
-            st->a[i] = st->a[st->size_a - 1];
-        }
-        else
-        {
-            tmp2 = st->a[i];
-            st->a[i] = tmp;
-        }
-        tmp = tmp2;
-        i++;
-    }
+	i = 0;
+	while (i < st->size_a && st->size_a >= 2)
+	{
+		if (i == 0)
+		{
+			tmp2 = st->a[i];
+			st->a[i] = st->a[st->size_a - 1];
+		}
+		else
+		{
+			tmp2 = st->a[i];
+			st->a[i] = tmp;
+		}
+		tmp = tmp2;
+		i++;
+	}
 }
 
-void rb(t_stacks *st)
+void	rb(t_stacks *st)
 {
-    int i;
-    int tmp;
-    int tmp2;
+	int	i;
+	int	tmp;
+	int	tmp2;
 
-    i = 0;
-    while (i < st->size_b && st->size_b >= 2)
-    {
-        if (i == 0)
-        {
-            tmp2 = st->b[i];
-            st->b[i] = st->b[st->size_b - 1];
-        }
-        else
-        {
-            tmp2 = st->b[i];
-            st->b[i] = tmp;
-        }
-        tmp = tmp2;
-        i++;
-    }
+	i = 0;
+	while (i < st->size_b && st->size_b >= 2)
+	{
+		if (i == 0)
+		{
+			tmp2 = st->b[i];
+			st->b[i] = st->b[st->size_b - 1];
+		}
+		else
+		{
+			tmp2 = st->b[i];
+			st->b[i] = tmp;
+		}
+		tmp = tmp2;
+		i++;
+	}
 }
 
-void rr(t_stacks *st)
+void	rr(t_stacks *st)
 {
-    ra(st);
-    rb(st);
+	ra(st);
+	rb(st);
 }

@@ -6,16 +6,16 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/21 23:22:32 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 14:39:23 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void check_dup(t_stacks *st)
+void	check_dup(t_stacks *st)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < st->size_a)
@@ -28,10 +28,33 @@ void check_dup(t_stacks *st)
 	}
 }
 
-void check_just_swap(t_stacks *st)
+void	check_just_swap2(t_stacks *st)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
+	if (st->a[0] < st->a[1])
+	{
+		i = 0;
+		j = 0;
+		while (++i < st->size_a)
+			if (st->a[i] < st->a[i + 1])
+				j = 1;
+		if (j == 0)
+		{
+			action(st, "rra");
+			action(st, "rra");
+			action(st, "sa");
+			action(st, "ra");
+			action(st, "ra");
+		}
+	}
+}
+
+void	check_just_swap(t_stacks *st)
+{
+	int	i;
+	int	j;
 
 	j = 0;
 	i = -1;
@@ -45,31 +68,16 @@ void check_just_swap(t_stacks *st)
 			if (j == 0)
 				action(st, "sa");
 		}
-		if (st->a[0] < st->a[1])
-		{
-			i = 0;
-			j = 0;
-			while (++i < st->size_a)
-				if (st->a[i] < st->a[i + 1])
-					j = 1;
-			if (j == 0)
-			{
-				action(st, "rra");
-				action(st, "rra");
-				action(st, "sa");
-				action(st, "ra");
-				action(st, "ra");
-			}
-		}
+		check_just_swap2(st);
 	}
 }
 
-void sort(t_stacks *st)
+void	sort(t_stacks *st)
 {
-    while (1)
+	while (1)
 	{
 		if (check_a(st))
-			break;
+			break ;
 		check_just_swap(st);
 		if (st->size_a <= 3)
 			sort_3(st);
@@ -80,11 +88,11 @@ void sort(t_stacks *st)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_stacks st;
-	char **lst;
-	
+	t_stacks	st;
+	char		**lst;
+
 	if (ac < 2)
 		ft_error();
 	lst = ft_split(av[1], ' ');

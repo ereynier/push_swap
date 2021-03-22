@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 15:22:59 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 15:58:33 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 15:07:32 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_countsep(char const *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*s)
@@ -28,7 +28,7 @@ static int	ft_countsep(char const *s, char c)
 
 static int	ft_dup(char const *s, char *dst, int start, char sep)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[start + i] != sep && s[start + i] != 0)
@@ -40,7 +40,7 @@ static int	ft_dup(char const *s, char *dst, int start, char sep)
 	return (i);
 }
 
-char		**ft_clear(char **out, int k)
+char	**ft_clear(char **out, int k)
 {
 	if (!k)
 		return (NULL);
@@ -54,24 +54,36 @@ char		**ft_clear(char **out, int k)
 	return (NULL);
 }
 
-char		**ft_split(char const *s, char c)
+int	my_malloc_out(char ***in, int *k, char const *s, char c)
+{
+	int	i;
+
+	*k = 0;
+	i = ft_countsep(s, c);
+	*in = (char **)malloc(((i) + 2) * sizeof(char *));
+	if (*in == NULL)
+		return (1);
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**out;
 	int		i;
 	int		k;
 	int		j;
 
-	k = 0;
-	i = ft_countsep(s, c);
-	if (!(out = (char**)malloc((i + 2) * sizeof(char*))))
+	out = NULL;
+	if (my_malloc_out(&out, &k, s, c))
 		return (0);
 	i = 0;
-	while (i < (int)ft_strlen((char*)s))
+	while (i < (int)ft_strlen((char *)s))
 	{
 		j = 0;
 		while (s[i + j] != c && s[i + j] != 0)
 			j++;
-		if (!(out[k] = (char*)malloc(j * sizeof(char) + 1)))
+		out[k] = (char *)malloc(j * sizeof(char) + 1);
+		if (out[k] == NULL)
 			return (ft_clear(out, k));
 		i = i + ft_dup(s, out[k], i, c) + 1;
 		if (out[k][0] != 0)

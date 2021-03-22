@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/20 17:19:47 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 14:33:40 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,14 @@ void	exec(char *in, t_stacks *st)
 		pa(st);
 	else if (ft_strcomp(in, "ra"))
 		ra(st);
-	else if (ft_strcomp(in, "rb"))
-		rb(st);
-	else if (ft_strcomp(in, "rr"))
-		rr(st);
-	else if (ft_strcomp(in, "rra"))
-		rra(st);
-	else if (ft_strcomp(in, "rrb"))
-		rrb(st);
-	else if (ft_strcomp(in, "rrr"))
-		rrr(st);
 	else
-		ft_free(st);
+		exec2(in, st);
 }
 
-void check_dup(t_stacks *st)
+void	check_dup(t_stacks *st)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < st->size_a)
@@ -60,7 +50,7 @@ void check_dup(t_stacks *st)
 
 void	check_sort(t_stacks *st)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (st->size_a == st->size && st->size_b == 0)
@@ -79,9 +69,9 @@ void	check_sort(t_stacks *st)
 
 void	checker(t_stacks *st)
 {
-	char in[2];
-	char str[256];
-	int i;
+	char	in[2];
+	char	str[256];
+	int		i;
 
 	i = 0;
 	while (i < 256)
@@ -94,7 +84,7 @@ void	checker(t_stacks *st)
 		{
 			str[i] = 0;
 			exec(str, st);
-			while(i >= 0)
+			while (i >= 0)
 				str[i--] = 0;
 		}
 		i++;
@@ -104,8 +94,8 @@ void	checker(t_stacks *st)
 
 int	main(int ac, char **av)
 {
-	t_stacks st;
-	char **lst;
+	t_stacks	st;
+	char		**lst;
 
 	if (ac < 2)
 		ft_error();
