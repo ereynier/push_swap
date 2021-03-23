@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:36:01 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/22 18:02:31 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:05:42 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	pb_100_insert_b(t_stacks *st, int min)
 	i = 0;
 	if (st->size_b > 0)
 	{
-		i = (min + 1) % st->size_b;
+		i = min;
 		while (st->b[i] < st->a[st->size_a - 1] && j++ < st->size_b)
 			i = (i + 1) % st->size_b;
 		get_pos_b(st, i);
@@ -83,15 +83,15 @@ void	pb_100_bis(t_stacks *st, int chunk, int min)
 		while (++i < st->size_a && st->size_a > 0)
 		{
 			if ((st->a[i] >= min + n * chunk
-					&& st->a[i] < min + (n + 1) * chunk))
+					&& st->a[i] <= min + (n + 1) * chunk))
 				pb_100_bis2(st, &i, &m, 1);
 			else if ((st->a[st->size_a - 1 - i] >= min + n * chunk
-					&& st->a[st->size_a - 1 - i] < min + (n + 1) * chunk))
+					&& st->a[st->size_a - 1 - i] <= min + (n + 1) * chunk))
 				pb_100_bis2(st, &i, &m, 0);
 		}
 		n++;
-		if (n > 13)
-			n = 13;
+		if (n > 5 + (st->size / 100) + 1)
+			n = 5 + (st->size / 100) + 1;
 	}
 }
 
@@ -113,6 +113,6 @@ void	pb_100(t_stacks *st)
 			min = st->a[i];
 		i++;
 	}
-	chunk = (max - min) / 13;
+	chunk = (max - min) / (5 + (st->size / 100) + 1);
 	pb_100_bis(st, chunk, min);
 }
