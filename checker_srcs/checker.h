@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 11:25:57 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/22 14:54:35 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 17:21:20 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stacks
 int		ft_strlen(char *str);
 void	ft_error(void);
 int		check_num(char *str);
-int		ft_atoi(char *str, t_stacks *st);
+int		ft_atoi(char *str, t_stacks *st, char **lst);
 void	checker(t_stacks *st);
 void	ft_free(t_stacks *st);
 void	exec(char *in, t_stacks *st);
@@ -37,8 +37,9 @@ int		ft_strcomp(const char *s1, const char *s2);
 void	ko_ok(t_stacks *st, char *s);
 void	check_sort(t_stacks *st);
 char	**ft_split(char const *s, char c);
-void	use_lst(char **av, t_stacks *st, int d);
+void	use_lst(char **av, t_stacks *st, int d, char **lst);
 void	exec2(char *in, t_stacks *st);
+void	ft_free_lst(char **lst, int d);
 void	pb(t_stacks *st);
 void	pa(t_stacks *st);
 void	sa(t_stacks *st);

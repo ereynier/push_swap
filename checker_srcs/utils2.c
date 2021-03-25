@@ -6,13 +6,28 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:51:27 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/22 12:26:43 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 17:31:01 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	ft_atoi(char *str, t_stacks *st)
+void	ft_free_lst(char **lst, int d)
+{
+	int	i;
+
+	i = 0;
+	while (lst[i])
+	{
+		free(lst[i]);
+		i++;
+	}
+	free(lst);
+	if (d == 1)
+		ft_error();
+}
+
+int	ft_atoi(char *str, t_stacks *st, char **lst)
 {
 	long int	n;
 	int			neg;
@@ -31,7 +46,10 @@ int	ft_atoi(char *str, t_stacks *st)
 		i++;
 	}
 	if (n * neg > 2147483647 || n * neg < -2147483648)
+	{
+		ft_free_lst(lst, 0);
 		ft_free(st);
+	}
 	return ((int)(n * neg));
 }
 
@@ -43,7 +61,7 @@ int	z_to_o(int i)
 		return (0);
 }
 
-void	use_lst(char **av, t_stacks *st, int d)
+void	use_lst(char **av, t_stacks *st, int d, char **lst)
 {
 	int	i;
 	int	ac;
@@ -54,18 +72,18 @@ void	use_lst(char **av, t_stacks *st, int d)
 		ac++;
 	while (av[i])
 		if (check_num(av[i++]))
-			ft_error();
-	st->a = malloc(ac * sizeof(int));
-	st->b = malloc(ac * sizeof(int));
+			ft_free_lst(lst, 1);
+	st->a = malloc((ac + 1) * sizeof(int));
+	st->b = malloc((ac + 1) * sizeof(int));
 	if (st->a == NULL || st->b == NULL)
-		ft_error();
+		ft_free_lst(lst, 1);
 	i = ac - d;
 	st->size = ac - d;
 	st->size_a = st->size;
 	st->size_b = 0;
 	while (i > 0)
 	{
-		st->a[ac - d - i] = ft_atoi(av[i - (z_to_o(d))], st);
+		st->a[ac - d - i] = ft_atoi(av[i - (z_to_o(d))], st, lst);
 		i--;
 	}
 }

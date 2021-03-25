@@ -6,13 +6,13 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:11 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/23 16:07:11 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 17:31:20 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dup(t_stacks *st)
+void	check_dup(t_stacks *st, char **lst)
 {
 	int	i;
 	int	j;
@@ -22,8 +22,14 @@ void	check_dup(t_stacks *st)
 	{
 		j = i + 1;
 		while (j < st->size_a)
-			if (st->a[i] == st->a[j++])
+		{
+			if (st->a[i] == st->a[j])
+			{
+				ft_free_lst(lst, 0);
 				ft_free(st);
+			}
+			j++;
+		}
 		i++;
 	}
 }
@@ -37,7 +43,7 @@ void	check_just_swap2(t_stacks *st)
 	{
 		i = 0;
 		j = 0;
-		while (++i < st->size_a)
+		while (++i < st->size_a - 1)
 			if (st->a[i] < st->a[i + 1])
 				j = 1;
 		if (j == 0)
@@ -97,10 +103,13 @@ int	main(int ac, char **av)
 		ft_error();
 	lst = ft_split(av[1], ' ');
 	if (lst[1])
-		use_lst(lst, &st, 0);
+		use_lst(lst, &st, 0, lst);
 	else
-		use_lst(av, &st, 1);
-	check_dup(&st);
+		use_lst(av, &st, 1, lst);
+	check_dup(&st, lst);
+	ft_free_lst(lst, 0);
 	sort(&st);
+	free(st.a);
+	free(st.b);
 	return (0);
 }

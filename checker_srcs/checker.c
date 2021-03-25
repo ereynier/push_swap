@@ -6,7 +6,7 @@
 /*   By: ereynier <ereynier@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:48:13 by ereynier          #+#    #+#             */
-/*   Updated: 2021/03/22 14:33:40 by ereynier         ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 17:30:34 by ereynier         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	exec(char *in, t_stacks *st)
 		exec2(in, st);
 }
 
-void	check_dup(t_stacks *st)
+void	check_dup(t_stacks *st, char **lst)
 {
 	int	i;
 	int	j;
@@ -42,8 +42,14 @@ void	check_dup(t_stacks *st)
 	{
 		j = i + 1;
 		while (j < st->size_a)
-			if (st->a[i] == st->a[j++])
+		{
+			if (st->a[i] == st->a[j])
+			{
+				ft_free_lst(lst, 0);
 				ft_free(st);
+			}
+			j++;
+		}
 		i++;
 	}
 }
@@ -101,10 +107,11 @@ int	main(int ac, char **av)
 		ft_error();
 	lst = ft_split(av[1], ' ');
 	if (lst[1])
-		use_lst(lst, &st, 0);
+		use_lst(lst, &st, 0, lst);
 	else
-		use_lst(av, &st, 1);
-	check_dup(&st);
+		use_lst(av, &st, 1, lst);
+	check_dup(&st, lst);
+	ft_free_lst(lst, 0);
 	checker(&st);
 	return (0);
 }
